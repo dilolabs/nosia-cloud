@@ -1,0 +1,32 @@
+{% assign meta_title = page.title | default: site.title %}
+{% assign meta_description = page.description | default: site.description %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="{{ meta_description | escape }}">
+<link rel="canonical" href="{{ page.url | absolute_url | escape }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ page.url | absolute_url | escape }}">
+<meta property="og:title" content="{{ meta_title | escape }}">
+<meta property="og:description" content="{{ meta_description | escape }}">
+<meta property="og:image" content="{{ '/assets/images/nosia-logo.png' | absolute_url | escape }}">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="{{ meta_title | escape }}">
+<meta property="twitter:description" content="{{ meta_description | escape }}">
+<meta property="twitter:image" content="{{ '/assets/images/nosia-logo.png' | absolute_url | escape }}">
+<link rel="icon" type="image/png" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}" sizes="32x32">
+<link rel="icon" type="image/png" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}" sizes="16x16">
+<link rel="apple-touch-icon" href="{{ '/assets/images/nosia-logo.png' | relative_url }}">
+<script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
+<link rel="stylesheet" href="{{ '/assets/css/tokens.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": {{ site.title | jsonify }},
+  "description": {{ meta_description | jsonify }},
+  "inLanguage": {{ page.lang | default: 'fr' | jsonify }},
+  "url": {{ page.url | absolute_url | jsonify }}
+}
+</script>
+<title>{{ meta_title | escape }}</title>

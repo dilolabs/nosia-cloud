@@ -1,0 +1,26 @@
+{% assign t = site.data.translations[page.lang] %}
+<header class="header">
+  <div class="container header-row">
+    <a href="{{ t.home_url | relative_url }}" class="logo" aria-label="{{ t.home | escape }}">
+      <img src="{{ '/assets/images/nosia-logo.png' | relative_url }}" alt="{{ t.logo_alt | escape }}" height="32">
+    </a>
+    <a href="mailto:contact@nosia.cloud" class="btn btn-primary header-contact">{{ t.cta | escape }}</a>
+    <div class="header-tools">
+      <button type="button" id="navigation-toggle" aria-controls="section-navigation" aria-expanded="false" hidden>{{ t.menu | escape }}</button>
+      <label for="theme-preference" class="theme-control" data-theme-control hidden>
+        <span>{{ t.theme | escape }}</span>
+        <select id="theme-preference">
+          <option value="system">{{ t.theme_system | escape }}</option>
+          <option value="light">{{ t.theme_light | escape }}</option>
+          <option value="dark">{{ t.theme_dark | escape }}</option>
+        </select>
+      </label>
+      <a href="{{ t.language_url | relative_url }}" class="lang-toggle" lang="{{ t.language_code | escape }}" hreflang="{{ t.language_code | escape }}" aria-label="{{ t.language_short | escape }} — {{ t.language_label | escape }}">{{ t.language_short | escape }}</a>
+    </div>
+    <nav class="nav" id="section-navigation" aria-label="{{ t.nav_aria | escape }}">
+      <a href="#usages">{{ t.uses | escape }}</a>
+      <a href="#deployments">{{ t.deployments | escape }}</a>
+      <a href="#documentation">{{ t.documentation | escape }}</a>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,128 @@
+{% assign landing = site.data.landing[page.lang] %}
+{% assign t = site.data.translations[page.lang] %}
+<section id="hero" class="hero">
+  <div class="container">
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <p class="eyebrow">{{ landing.eyebrow | escape }}</p>
+        <h1>{{ landing.headline | escape }}</h1>
+        <p id="hero-subtitle" class="subtitle">{{ landing.subtitle | escape }}</p>
+        <div class="hero-actions">
+          <a href="mailto:contact@nosia.cloud" class="btn btn-primary">{{ t.cta | escape }}</a>
+          <a href="#usages" class="btn btn-secondary">{{ landing.explore | escape }}</a>
+        </div>
+      </div>
+      <aside class="hero-panel" aria-labelledby="daily-title">
+        <h2 id="daily-title">{{ t.daily_title | escape }}</h2>
+        <ul>
+          {% for use in landing.uses %}
+          <li>{{ use.title | escape }}{% if forloop.last %}<p>{{ use.text | escape }}</p>{% endif %}</li>
+          {% endfor %}
+        </ul>
+        <p class="panel-note">{{ landing.pillars.last.text | escape }}</p>
+      </aside>
+    </div>
+    <div class="grid pillars">
+      {% for pillar in landing.pillars %}
+      <article class="card">
+        <h2>{{ pillar.title | escape }}</h2>
+        <p>{{ pillar.text | escape }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<section id="usages" class="features">
+  <div class="container">
+    <h2>{{ landing.uses_title | escape }}</h2>
+    <div class="grid">
+      {% for use in landing.uses %}
+      <article class="card">
+        <h3>{{ use.title | escape }}</h3>
+        <p>{{ use.text | escape }}</p>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="content-note">{{ landing.ai_notice | escape }}</p>
+  </div>
+</section>
+<section id="deployments" class="features">
+  <div class="container">
+    <h2>{{ landing.deployments_title | escape }}</h2>
+    <div class="grid">
+      {% for deployment in landing.deployments %}
+      <article class="card" data-deployment="{{ deployment.id | escape }}">
+        <h3>{{ deployment.title | escape }}</h3>
+        <p>{{ deployment.text | escape }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<section id="accompagnement" class="quickstart">
+  <div class="container">
+    <h2>{{ landing.support_title | escape }}</h2>
+    <p>{{ landing.support_intro | escape }}</p>
+    <div class="steps">
+      {% for step in landing.support_steps %}
+      <article class="step">
+        <span class="step-number" aria-hidden="true">{{ forloop.index }}</span>
+        <h3>{{ step.title | escape }}</h3>
+        <p>{{ step.text | escape }}</p>
+      </article>
+      {% endfor %}
+    </div>
+    <p id="support-scope" class="content-note">{{ landing.support_note | escape }}</p>
+  </div>
+</section>
+<section id="confiance" class="documentation">
+  <div class="container">
+    <h2>{{ landing.trust_title | escape }}</h2>
+    <p>{{ landing.trust_intro | escape }}</p>
+    <div id="documentation">
+      <h3>{{ landing.resource_label | escape }}</h3>
+      <p>{{ landing.developer_note | escape }}</p>
+      <div class="resource-links">
+        <a href="https://nosia.ai/#documentation">{{ t.documentation | escape }}</a>
+        <a href="https://github.com/dilolabs/nosia">{{ landing.footer_code | escape }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="faq" class="faq">
+  <div class="container">
+    <h2>{{ landing.faq_title | escape }}</h2>
+    {% for item in landing.faq %}
+    <details class="card">
+      <summary>{{ item.question | escape }}</summary>
+      <p>{{ item.answer | escape }}</p>
+    </details>
+    {% endfor %}
+  </div>
+</section>
+<section id="contact" class="contact">
+  <div class="container">
+    <h2>{{ landing.contact_title | escape }}</h2>
+    <p>{{ landing.contact_intro | escape }}</p>
+    <a href="mailto:contact@nosia.cloud" class="btn btn-primary">{{ t.cta | escape }}</a>
+    <p class="contact-address"><a href="mailto:contact@nosia.cloud">contact@nosia.cloud</a></p>
+  </div>
+</section>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-brand">
+      <img src="{{ '/assets/images/nosia-logo.png' | relative_url }}" alt="{{ t.logo_alt | escape }}" height="40">
+      <p>{{ landing.footer_description | escape }}</p>
+    </div>
+    <div class="links">
+      <a href="https://nosia.ai/">{{ landing.footer_project | escape }}</a>
+      <a href="https://github.com/dilolabs/nosia">{{ landing.footer_code | escape }}</a>
+      {% if page.lang == 'fr' %}
+      <a href="{{ '/index-en.html' | relative_url }}" hreflang="en" lang="en">English</a>
+      {% else %}
+      <a href="{{ '/' | relative_url }}" hreflang="fr" lang="fr">Français</a>
+      {% endif %}
+    </div>
+    <p>Copyright © 2024–{{ site.time | date: '%Y' }} Dilolabs.</p>
+  </div>
+</footer>

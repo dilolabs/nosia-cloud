@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: 'fr' }}">
+<head>
+  {% include head.html %}
+</head>
+<body>
+  {% include header.html %}
+  <main>
+    {{ content }}
+  </main>
+  {% assign t = site.data.translations[page.lang] %}
+  <a href="#" class="back-to-top" aria-label="{{ t.back_to_top | default: 'Back to top' | escape }}">{{ t.back_to_top | default: 'Back to top' | escape }}</a>
+  <script defer src="{{ '/assets/js/navigation.js' | relative_url }}"></script>
+  <!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-aI8zAp6oCsVcG8Iq2ZBUP.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+</body>
+</html>

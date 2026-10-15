@@ -1,0 +1,20 @@
+title: Nosia.cloud
+description: >-
+  Un assistant IA privé pour vos équipes, déployé dans vos locaux, en France
+  chez Scaleway ou en Suisse chez Infomaniak. Parlons de votre projet.
+url: https://nosia.cloud
+baseurl: ""
+theme: null
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - .github/
+  - .gitignore
+  - README.md
+  - docs/
+  - test/
