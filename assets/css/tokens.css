@@ -1,16 +1,44 @@
 :root {
   color-scheme: light;
-  --bg: #f7faf8;
+  --bg: #f8f7f3;
   --surface: #ffffff;
-  --tint: #eaf5ee;
-  --text: #172b23;
-  --muted: #50665a;
-  --primary: #15803d;
+  --soft: #eeede7;
+  --tint: #eaf1e6;
+  --text: #202627;
+  --muted: #545b5c;
+  --logo-green: #1bd626;
+  --primary: #216e3a;
   --on-primary: #ffffff;
-  --primary-hover: #166534;
-  --line: #dce7df;
-  --control: #71877b;
-  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --primary-hover: #18592d;
+  --line: #d3d5cf;
+  --control: #777f80;
+  --focus: #216e3a;
+  --contact-bg: #203e2e;
+  --contact-text: #f5f8f2;
+  --contact-muted: #d0decf;
+  --contact-button: #e0efd5;
+  --contact-button-text: #203e2e;
+  --contact-hover: #f3f8ee;
+  --contact-focus: #bdeaa5;
+  --font: "Raleway", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --width: 78rem;
+  --gutter: clamp(1rem, 3.5vw, 3rem);
+  --section-space: clamp(4rem, 7vw, 7rem);
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --radius-small: .625rem;
+  --radius-control: .875rem;
+  --radius-frame: 1.25rem;
+  --radius-card: 1.5rem;
+  --radius-panel: clamp(1.75rem, 3vw, 2.25rem);
+  --shadow-soft: 0 .25rem 1rem #2026270a;
+  --shadow-raised: 0 .5rem 1.5rem #20262712;
+  --transition: 160ms ease;
   --header-offset: 0px;
 }
 
@@ -18,14 +46,21 @@
   color-scheme: dark;
   --bg: #0c1712;
   --surface: #13231b;
-  --tint: #193726;
+  --soft: #192a20;
+  --tint: #203b29;
   --text: #f1f7f3;
   --muted: #b4c8bc;
-  --primary: #4ade80;
-  --on-primary: #072b17;
-  --primary-hover: #86efac;
-  --line: #2c4234;
-  --control: #748a7b;
+  --primary: #97dfa5;
+  --on-primary: #102b19;
+  --primary-hover: #b5eac0;
+  --line: #3f5546;
+  --control: #83998b;
+  --focus: #97dfa5;
+  --contact-bg: #203b29;
+  --contact-text: #f1f7f3;
+  --contact-muted: #cadccb;
+  --shadow-soft: 0 .25rem 1rem #00000014;
+  --shadow-raised: 0 .5rem 1.5rem #00000024;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -33,13 +68,20 @@
     color-scheme: dark;
     --bg: #0c1712;
     --surface: #13231b;
-    --tint: #193726;
+    --soft: #192a20;
+    --tint: #203b29;
     --text: #f1f7f3;
     --muted: #b4c8bc;
-    --primary: #4ade80;
-    --on-primary: #072b17;
-    --primary-hover: #86efac;
-    --line: #2c4234;
-    --control: #748a7b;
+    --primary: #97dfa5;
+    --on-primary: #102b19;
+    --primary-hover: #b5eac0;
+    --line: #3f5546;
+    --control: #83998b;
+    --focus: #97dfa5;
+    --contact-bg: #203b29;
+    --contact-text: #f1f7f3;
+    --contact-muted: #cadccb;
+    --shadow-soft: 0 .25rem 1rem #00000014;
+    --shadow-raised: 0 .5rem 1.5rem #00000024;
   }
 }

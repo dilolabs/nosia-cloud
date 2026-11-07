@@ -2,6 +2,24 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { launch } from './support/browser.mjs';
 
+test('changement de thème sans interpolation des contrastes', async () => {
+  const browser = await launch();
+  try {
+    const p = await browser.page({ width: 320 });
+    await p.go('/index-en.html');
+    for (const choice of ['dark', 'light', 'dark']) {
+      await p.choose(choice);
+      const colors = await p.evaluate(`(() => {
+        const s = getComputedStyle(document.querySelector('.skip-link'));
+        return { color: s.color, background: s.backgroundColor };
+      })()`);
+      assert.deepEqual(colors, choice === 'dark'
+        ? { color: 'rgb(16, 43, 25)', background: 'rgb(151, 223, 165)' }
+        : { color: 'rgb(255, 255, 255)', background: 'rgb(33, 110, 58)' });
+    }
+  } finally { await browser.close(); }
+});
+
 test('préférences réelles, langues, 404 et onglets', async () => {
   const browser = await launch();
   try {

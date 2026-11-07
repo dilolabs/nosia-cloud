@@ -10,7 +10,7 @@ EXPECTED = {
     'fr': {
         'file': 'index.html',
         'hero': 'Votre assistant IA privé, adapté à votre entreprise.',
-        'subtitle': "Interrogez vos documents, préparez vos contenus et simplifiez le travail de vos équipes. Dans vos locaux, en France chez Scaleway ou en Suisse chez Infomaniak : choisissez le déploiement adapté à vos exigences, avec un accompagnement défini selon votre projet.",
+        'subtitle': "Questionnez vos documents, préparez vos contenus et travaillez avec vos outils. Dans vos locaux, en France ou en Suisse : choisissez votre déploiement, avec un accompagnement défini selon votre projet.",
         'title': 'Nosia.cloud — Assistant IA privé pour les PME',
         'description': 'Un assistant IA privé pour vos équipes, déployé dans vos locaux, en France chez Scaleway ou en Suisse chez Infomaniak. Parlons de votre projet.',
         'cta': 'Parlons de votre projet',
@@ -22,7 +22,7 @@ EXPECTED = {
     'en': {
         'file': 'index-en.html',
         'hero': 'Your private AI assistant, tailored to your business.',
-        'subtitle': "Ask questions about your documents, prepare content and simplify your team's day-to-day work. On your premises, in France with Scaleway or in Switzerland with Infomaniak: choose the deployment that fits your requirements, with support scoped to your project.",
+        'subtitle': "Ask questions about your documents, prepare content and work with your tools. On your premises, in France or in Switzerland: choose your deployment, with support scoped to your project.",
         'title': 'Nosia.cloud — Private AI assistant for SMEs',
         'description': "A private AI assistant for your team, deployed on your premises, in France with Scaleway or in Switzerland with Infomaniak. Let's discuss your project.",
         'cta': "Let's discuss your project",
@@ -165,6 +165,7 @@ class LandingPageTest(unittest.TestCase):
         allowed_external = {
             'https://nosia.ai/', 'https://nosia.ai/#documentation',
             'https://github.com/dilolabs/nosia',
+            'https://dilolabs.fr',
         }
         for lang, expected, page in self.pages():
             with self.subTest(lang=lang):
@@ -177,7 +178,7 @@ class LandingPageTest(unittest.TestCase):
                                  ['/' if lang == 'fr' else '/index-en.html'])
                 self.assertEqual({node.attrs.get('href') for node in header_links
                                   if node.attrs.get('href', '').startswith('#')},
-                                 {'#usages', '#deployments', '#documentation'})
+                                  {'#usages', '#deployments', '#accompagnement', '#documentation'})
                 for anchor in page.find('a'):
                     href = anchor.attrs.get('href', '')
                     if href.startswith('#') and href != '#':

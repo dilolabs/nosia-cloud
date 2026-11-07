@@ -7,7 +7,7 @@
   const tools = document.querySelector('.header-tools');
   const contact = document.querySelector('.header-contact');
   if (!header || !row || !nav || !toggle || !tools || !contact) return;
-  const desktop = window.matchMedia('(min-width: 64rem)');
+  const desktop = window.matchMedia('(min-width: 72rem)');
   const short = window.matchMedia('(max-height: 500px)');
   let open = false;
 

@@ -1,128 +1,142 @@
 {% assign landing = site.data.landing[page.lang] %}
 {% assign t = site.data.translations[page.lang] %}
-<section id="hero" class="hero">
+<section id="hero" class="hero" aria-labelledby="hero-heading">
   <div class="container">
     <div class="hero-layout">
       <div class="hero-copy">
-        <p class="eyebrow">{{ landing.eyebrow | escape }}</p>
-        <h1>{{ landing.headline | escape }}</h1>
+        <p class="eyebrow"><span class="brand-dot" aria-hidden="true"></span>{{ landing.eyebrow | escape }}</p>
+        <h1 id="hero-heading"><span>{{ landing.headline_accent | escape }}</span> {{ landing.headline_rest | escape }}</h1>
         <p id="hero-subtitle" class="subtitle">{{ landing.subtitle | escape }}</p>
         <div class="hero-actions">
-          <a href="mailto:contact@nosia.cloud" class="btn btn-primary">{{ t.cta | escape }}</a>
-          <a href="#usages" class="btn btn-secondary">{{ landing.explore | escape }}</a>
+          <a href="mailto:contact@nosia.cloud" class="btn btn-primary">{{ t.cta | escape }} {% include icon.html name="arrow" %}</a>
+          <a href="#usages" class="btn btn-secondary">{{ landing.explore | escape }} {% include icon.html name="down" %}</a>
         </div>
+        <a class="signature" href="https://dilolabs.fr">{{ t.signature | escape }}</a>
       </div>
       <aside class="hero-panel" aria-labelledby="daily-title">
-        <h2 id="daily-title">{{ t.daily_title | escape }}</h2>
-        <ul>
-          {% for use in landing.uses %}
-          <li>{{ use.title | escape }}{% if forloop.last %}<p>{{ use.text | escape }}</p>{% endif %}</li>
-          {% endfor %}
-        </ul>
-        <p class="panel-note">{{ landing.pillars.last.text | escape }}</p>
+        <div class="preview-heading">
+          <p class="eyebrow">{{ landing.preview_label | escape }}</p>
+          <span class="preview-symbol" aria-hidden="true">{% include icon.html name="document" %}</span>
+        </div>
+        <h2 id="daily-title">{{ landing.preview_title | escape }}</h2>
+        <figure class="product-preview">
+          <img src="{{ '/assets/images/nosia-product.webp' | relative_url }}" alt="{{ landing.preview_alt | escape }}" width="800" height="500" fetchpriority="high">
+          <figcaption>{{ landing.preview_caption | escape }}</figcaption>
+        </figure>
+        <p class="preview-note">{{ landing.preview_note | escape }}</p>
       </aside>
     </div>
-    <div class="grid pillars">
+    <div class="pillars">
       {% for pillar in landing.pillars %}
-      <article class="card">
-        <h2>{{ pillar.title | escape }}</h2>
-        <p>{{ pillar.text | escape }}</p>
-      </article>
+      <div class="pillar">
+        <span class="pillar-check">{% include icon.html name="check" %}</span>
+        <div><h2>{{ pillar.title | escape }}</h2><p>{{ pillar.text | escape }}</p></div>
+      </div>
       {% endfor %}
     </div>
   </div>
 </section>
-<section id="usages" class="features">
+
+<section id="usages" class="uses section" aria-labelledby="uses-heading">
   <div class="container">
-    <h2>{{ landing.uses_title | escape }}</h2>
-    <div class="grid">
+    <header class="section-heading">
+      <p class="eyebrow">{{ landing.uses_label | escape }}</p>
+      <div><h2 id="uses-heading">{{ landing.uses_title | escape }}</h2><p>{{ landing.uses_intro | escape }}</p></div>
+    </header>
+    <p class="examples-intro">{{ landing.examples_label | escape }}</p>
+    <div class="use-list">
       {% for use in landing.uses %}
-      <article class="card">
-        <h3>{{ use.title | escape }}</h3>
-        <p>{{ use.text | escape }}</p>
+      <article class="use-row">
+        <div class="use-title"><span class="icon-frame">{% include icon.html name=use.icon %}</span><h3>{{ use.title | escape }}</h3></div>
+        <div class="use-description"><p class="situation">{{ use.situation | escape }}</p><p>{{ use.text | escape }}</p></div>
+        <div class="use-example"><p class="example-label">{{ landing.example_label | escape }}</p><blockquote><p>« {{ use.example | escape }} »</p></blockquote></div>
       </article>
       {% endfor %}
     </div>
-    <p class="content-note">{{ landing.ai_notice | escape }}</p>
+    <p class="content-note ai-notice">{{ landing.ai_notice | escape }}</p>
   </div>
 </section>
-<section id="deployments" class="features">
+
+<section id="deployments" class="deployments section" aria-labelledby="deployments-heading">
   <div class="container">
-    <h2>{{ landing.deployments_title | escape }}</h2>
-    <div class="grid">
+    <header class="section-heading">
+      <p class="eyebrow">{{ landing.deployments_label | escape }}</p>
+      <div><h2 id="deployments-heading">{{ landing.deployments_title | escape }}</h2><p>{{ landing.deployments_intro | escape }}</p></div>
+    </header>
+    <div class="deployment-grid">
       {% for deployment in landing.deployments %}
-      <article class="card" data-deployment="{{ deployment.id | escape }}">
+      <article class="deployment-card" data-deployment="{{ deployment.id | escape }}">
+        <div class="deployment-top"><span class="icon-frame">{% include icon.html name=deployment.icon %}</span><span class="deployment-label">{{ deployment.label | escape }}</span></div>
         <h3>{{ deployment.title | escape }}</h3>
         <p>{{ deployment.text | escape }}</p>
+        <dl>
+          <div><dt>{{ landing.hosting_label | escape }}</dt><dd>{{ deployment.location | escape }}</dd></div>
+          <div><dt>{{ landing.sizing_label | escape }}</dt><dd>{{ deployment.sizing | escape }}</dd></div>
+        </dl>
       </article>
       {% endfor %}
     </div>
+    <p class="content-note deployment-note">{{ landing.deployments_note | escape }}</p>
   </div>
 </section>
-<section id="accompagnement" class="quickstart">
+
+<section id="accompagnement" class="support section" aria-labelledby="support-heading">
   <div class="container">
-    <h2>{{ landing.support_title | escape }}</h2>
-    <p>{{ landing.support_intro | escape }}</p>
-    <div class="steps">
-      {% for step in landing.support_steps %}
-      <article class="step">
-        <span class="step-number" aria-hidden="true">{{ forloop.index }}</span>
-        <h3>{{ step.title | escape }}</h3>
-        <p>{{ step.text | escape }}</p>
-      </article>
-      {% endfor %}
-    </div>
-    <p id="support-scope" class="content-note">{{ landing.support_note | escape }}</p>
-  </div>
-</section>
-<section id="confiance" class="documentation">
-  <div class="container">
-    <h2>{{ landing.trust_title | escape }}</h2>
-    <p>{{ landing.trust_intro | escape }}</p>
-    <div id="documentation">
-      <h3>{{ landing.resource_label | escape }}</h3>
-      <p>{{ landing.developer_note | escape }}</p>
-      <div class="resource-links">
-        <a href="https://nosia.ai/#documentation">{{ t.documentation | escape }}</a>
-        <a href="https://github.com/dilolabs/nosia">{{ landing.footer_code | escape }}</a>
+    <div class="support-panel">
+      <header class="section-heading">
+        <p class="eyebrow">{{ landing.support_label | escape }}</p>
+        <div><h2 id="support-heading">{{ landing.support_title | escape }}</h2><p>{{ landing.support_intro | escape }}</p></div>
+      </header>
+      <ol class="steps">
+        {% for step in landing.support_steps %}
+        <li class="step"><span class="step-number" aria-hidden="true">0{{ forloop.index }}</span><h3>{{ step.title | escape }}</h3><p>{{ step.text | escape }}</p></li>
+        {% endfor %}
+      </ol>
+      <p id="support-scope" class="content-note">{{ landing.support_note | escape }}</p>
+      <div class="developer">
+        <div><h3>{{ landing.dilolabs_title | escape }}</h3><p>{{ landing.dilolabs_text | escape }}</p></div>
+        <a class="text-link" href="https://dilolabs.fr">{{ landing.dilolabs_link | escape }} {% include icon.html name="arrow" %}</a>
       </div>
     </div>
   </div>
 </section>
-<section id="faq" class="faq">
+
+<section id="confiance" class="trust section" aria-labelledby="trust-heading">
   <div class="container">
-    <h2>{{ landing.faq_title | escape }}</h2>
-    {% for item in landing.faq %}
-    <details class="card">
-      <summary>{{ item.question | escape }}</summary>
-      <p>{{ item.answer | escape }}</p>
-    </details>
-    {% endfor %}
+    <header class="section-heading">
+      <p class="eyebrow">{{ landing.trust_label | escape }}</p>
+      <div><h2 id="trust-heading">{{ landing.trust_title | escape }}</h2></div>
+    </header>
+    <div class="trust-layout">
+      <div class="trust-copy"><p>{{ landing.trust_intro | escape }}</p><p>{{ landing.trust_choices | escape }}</p><p class="content-note">{{ landing.trust_note | escape }}</p></div>
+      <div id="documentation" class="resource-panel">
+        <span class="icon-frame">{% include icon.html name="code" %}</span>
+        <p class="eyebrow">{{ landing.foundation_label | escape }}</p>
+        <h3>{{ landing.resource_label | escape }}</h3>
+        <p>{{ landing.developer_note | escape }}</p>
+        <a class="text-link" href="https://nosia.ai/">{{ landing.footer_project | escape }} {% include icon.html name="arrow" %}</a>
+        <div class="resource-links"><a href="https://nosia.ai/#documentation">{{ t.documentation | escape }}</a><a href="https://github.com/dilolabs/nosia">{{ landing.footer_code | escape }}</a></div>
+      </div>
+    </div>
   </div>
 </section>
-<section id="contact" class="contact">
-  <div class="container">
-    <h2>{{ landing.contact_title | escape }}</h2>
-    <p>{{ landing.contact_intro | escape }}</p>
-    <a href="mailto:contact@nosia.cloud" class="btn btn-primary">{{ t.cta | escape }}</a>
-    <p class="contact-address"><a href="mailto:contact@nosia.cloud">contact@nosia.cloud</a></p>
+
+<section id="faq" class="faq section" aria-labelledby="faq-heading">
+  <div class="container faq-layout">
+    <header class="faq-heading"><p class="eyebrow">{{ landing.faq_label | escape }}</p><h2 id="faq-heading">{{ landing.faq_title | escape }}</h2><p>{{ landing.faq_intro | escape }}</p></header>
+    <div class="faq-list">
+      {% for item in landing.faq %}
+      <details><summary><span>{{ item.question | escape }}</span>{% include icon.html name="plus" %}</summary><p>{{ item.answer | escape }}</p></details>
+      {% endfor %}
+    </div>
   </div>
 </section>
-<footer class="footer">
+
+<section id="contact" class="contact section" aria-labelledby="contact-heading">
   <div class="container">
-    <div class="footer-brand">
-      <img src="{{ '/assets/images/nosia-logo.png' | relative_url }}" alt="{{ t.logo_alt | escape }}" height="40">
-      <p>{{ landing.footer_description | escape }}</p>
+    <div class="contact-panel">
+      <div class="contact-copy"><p class="eyebrow">{{ landing.contact_label | escape }}</p><h2 id="contact-heading">{{ landing.contact_title | escape }}</h2><p>{{ landing.contact_intro | escape }}</p></div>
+      <div class="contact-actions"><a href="mailto:contact@nosia.cloud" class="btn btn-primary">{{ t.cta | escape }} {% include icon.html name="arrow" %}</a><a class="contact-address" href="mailto:contact@nosia.cloud">contact@nosia.cloud</a><p>{{ landing.contact_note | escape }}</p></div>
     </div>
-    <div class="links">
-      <a href="https://nosia.ai/">{{ landing.footer_project | escape }}</a>
-      <a href="https://github.com/dilolabs/nosia">{{ landing.footer_code | escape }}</a>
-      {% if page.lang == 'fr' %}
-      <a href="{{ '/index-en.html' | relative_url }}" hreflang="en" lang="en">English</a>
-      {% else %}
-      <a href="{{ '/' | relative_url }}" hreflang="fr" lang="fr">Français</a>
-      {% endif %}
-    </div>
-    <p>Copyright © 2024–{{ site.time | date: '%Y' }} Dilolabs.</p>
   </div>
-</footer>
+</section>

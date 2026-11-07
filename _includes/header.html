@@ -2,7 +2,8 @@
 <header class="header">
   <div class="container header-row">
     <a href="{{ t.home_url | relative_url }}" class="logo" aria-label="{{ t.home | escape }}">
-      <img src="{{ '/assets/images/nosia-logo.png' | relative_url }}" alt="{{ t.logo_alt | escape }}" height="32">
+      <img src="{{ '/assets/images/nosia-logo.png' | relative_url }}" alt="{{ t.logo_alt | escape }}" width="393" height="121">
+      <span class="brand-domain" aria-hidden="true">cloud</span>
     </a>
     <a href="mailto:contact@nosia.cloud" class="btn btn-primary header-contact">{{ t.cta | escape }}</a>
     <div class="header-tools">
@@ -20,7 +21,8 @@
     <nav class="nav" id="section-navigation" aria-label="{{ t.nav_aria | escape }}">
       <a href="#usages">{{ t.uses | escape }}</a>
       <a href="#deployments">{{ t.deployments | escape }}</a>
-      <a href="#documentation">{{ t.documentation | escape }}</a>
+      <a href="#accompagnement">{{ t.support | escape }}</a>
+      <a href="#documentation">{{ t.resources | escape }}</a>
     </nav>
   </div>
 </header>

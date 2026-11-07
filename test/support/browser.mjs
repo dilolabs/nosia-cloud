@@ -156,7 +156,7 @@ export async function launch() {
   await readFile(resolve(site, 'index.html'));
   const captures = await mkdtemp('/tmp/opencode/nosia-ui-captures-');
   const profile = await mkdtemp('/tmp/opencode/nosia-ui-profile-');
-  const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.png': 'image/png' };
+  const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.png': 'image/png', '.webp': 'image/webp', '.woff2': 'font/woff2' };
   const server = createServer(async (request, response) => {
     try {
       const pathname = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);

@@ -4,11 +4,13 @@
   {% include head.html %}
 </head>
 <body>
+  {% assign t = site.data.translations[page.lang] %}
+  <a class="skip-link" href="#main-content">{{ t.skip | escape }}</a>
   {% include header.html %}
-  <main>
+  <main id="main-content" tabindex="-1">
     {{ content }}
   </main>
-  {% assign t = site.data.translations[page.lang] %}
+  {% include footer.html %}
   <a href="#" class="back-to-top" aria-label="{{ t.back_to_top | default: 'Back to top' | escape }}">{{ t.back_to_top | default: 'Back to top' | escape }}</a>
   <script defer src="{{ '/assets/js/navigation.js' | relative_url }}"></script>
   <!-- Privacy-friendly analytics by Plausible -->

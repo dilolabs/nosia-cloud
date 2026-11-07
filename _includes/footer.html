@@ -1,0 +1,16 @@
+{% assign landing = site.data.landing[page.lang] %}
+{% assign t = site.data.translations[page.lang] %}
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="{{ t.home_url | relative_url }}" aria-label="{{ t.home | escape }}"><img src="{{ '/assets/images/nosia-logo.png' | relative_url }}" alt="{{ t.logo_alt | escape }}" width="393" height="121"><span class="brand-domain" aria-hidden="true">cloud</span></a>
+        <p>{{ landing.footer_description | escape }}</p>
+        <a class="signature" href="https://dilolabs.fr">{{ t.signature | escape }}</a>
+      </div>
+      <nav aria-label="{{ t.footer_navigation | escape }}"><h2>{{ t.footer_navigation | escape }}</h2><ul><li><a href="#usages">{{ t.uses | escape }}</a></li><li><a href="#deployments">{{ t.deployments | escape }}</a></li><li><a href="#accompagnement">{{ t.support | escape }}</a></li><li><a href="mailto:contact@nosia.cloud">{{ t.cta | escape }}</a></li></ul></nav>
+      <nav aria-label="{{ t.footer_resources | escape }}"><h2>{{ t.footer_resources | escape }}</h2><ul><li><a href="https://nosia.ai/">{{ landing.footer_project | escape }}</a></li><li><a href="https://nosia.ai/#documentation">{{ t.documentation | escape }}</a></li><li><a href="https://github.com/dilolabs/nosia">{{ landing.footer_code | escape }}</a></li><li><a href="{{ t.language_url | relative_url }}" hreflang="{{ t.language_code }}" lang="{{ t.language_code }}">{{ t.language_label | escape }}</a></li></ul></nav>
+    </div>
+    <p class="copyright">© 2024–{{ site.time | date: '%Y' }} Dilolabs.</p>
+  </div>
+</footer>

@@ -18,3 +18,4 @@ exclude:
   - README.md
   - docs/
   - test/
+  - design-system/

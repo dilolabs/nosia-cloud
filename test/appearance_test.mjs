@@ -152,7 +152,7 @@ test('sans JavaScript et scripts individuellement indisponibles', async () => {
         const p = await browser.page({ width: 375, dark, javascript: false });
         await p.go(path);
         assert.equal(await p.evaluate('document.documentElement.hasAttribute("data-theme")'), false);
-        assert.equal(await p.evaluate('getComputedStyle(document.body).backgroundColor'), dark ? 'rgb(12, 23, 18)' : 'rgb(247, 250, 248)');
+        assert.equal(await p.evaluate('getComputedStyle(document.body).backgroundColor'), dark ? 'rgb(12, 23, 18)' : 'rgb(248, 247, 243)');
         assert.equal(await p.evaluate('document.documentElement.scrollWidth <= document.documentElement.clientWidth'), true);
         if (path !== '/404.html') {
           assert.equal(await p.evaluate('document.querySelector("[data-theme-control]").hidden'), true);
